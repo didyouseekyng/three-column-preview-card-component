@@ -1,0 +1,160 @@
+$colors: (
+  orange: hsl(31, 77%, 52%),
+  darkCyan: hsl(184, 100%, 22%),
+  veryDarkCyan: hsl(179, 100%, 13%),
+  textWhite: hsla(0, 0%, 100%, 0.75),
+  veryLightGray: hsl(0, 0%, 95%),
+);
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@mixin mobileFirst($media) {
+  @media (min-width: $media / 16+rem) {
+    @content;
+  }
+}
+
+body {
+  font-size: 0.9375rem;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  background-color: map-get($colors, veryLightGray);
+}
+
+footer {
+  padding: 0rem 2.5rem 0.5rem;
+  text-align: center;
+
+  a {
+    font-family: "Lexend Deca", sans-serif;
+    color: map-get($colors, orange);
+    font-size: 1.125rem;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+  }
+
+  a:focus {
+    outline: 3px dotted;
+    outline-color: #191919;
+  }
+}
+
+.card {
+  // padding: 2rem 3.55rem;
+  padding: 2.5rem 3.4rem 1rem;
+  max-width: 23.45rem;
+  margin: 0 auto;
+
+  @include mobileFirst(768) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__item {
+    padding: 2.4rem 2.45rem;
+
+    @include mobileFirst(768) {
+      padding: 2.4rem;
+    }
+  }
+
+  &__item-icon {
+    height: 2rem;
+    width: 3rem;
+    margin-bottom: 1.5938rem;
+  }
+
+  &__item-header {
+    font-size: 1.95rem;
+    text-transform: uppercase;
+    color: map-get($colors, veryLightGray);
+    margin-bottom: 1.4rem;
+  }
+
+  &__item-text {
+    font-family: "Lexend Deca", sans-serif;
+    color: map-get($colors, textWhite);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    // width: 200px;
+
+    @include mobileFirst(768) {
+      margin-bottom: 4.1875rem;
+      width: 10.4375rem;
+    }
+  }
+
+  &__item-btn {
+    cursor: pointer;
+    border: 2px solid map-get($colors, veryLightGray);
+    border-radius: 20px;
+    padding: 0.62rem 1.55rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    font-family: "Lexend Deca", sans-serif;
+  }
+
+  .sedan-btn {
+    color: map-get($colors, orange);
+    transition: all 0.25s cubic-bezier(0.39, 1.11, 0.6, 0.09);
+  }
+
+  .sedan-btn:hover,
+  .sedan-btn:focus {
+    color: map-get($colors, veryLightGray);
+    background-color: map-get($colors, orange);
+    outline: 3px dotted;
+  }
+
+  .suv-btn {
+    color: map-get($colors, darkCyan);
+    transition: all 0.25s cubic-bezier(0.39, 1.11, 0.6, 0.09);
+  }
+
+  .suv-btn:hover,
+  .suv-btn:focus {
+    color: map-get($colors, veryLightGray);
+    background-color: map-get($colors, darkCyan);
+    outline: 3px dotted;
+  }
+
+  .luxury-btn {
+    color: map-get($colors, veryDarkCyan);
+    transition: all 0.25s cubic-bezier(0.39, 1.11, 0.6, 0.09);
+  }
+
+  .luxury-btn:hover,
+  .luxury-btn:focus {
+    color: map-get($colors, veryLightGray);
+    background-color: map-get($colors, veryDarkCyan);
+    outline: 3px dotted;
+  }
+
+  &__sedan {
+    border-radius: 7px 7px 0px 0px;
+    background-color: map-get($colors, orange);
+
+    @include mobileFirst(768) {
+      border-radius: 7px 0px 0px 7px;
+    }
+  }
+
+  &__suv {
+    background-color: map-get($colors, darkCyan);
+  }
+
+  &__luxury {
+    background-color: map-get($colors, veryDarkCyan);
+    border-radius: 0px 0px 7px 7px;
+
+    @include mobileFirst(768) {
+      border-radius: 0px 7px 7px 0px;
+    }
+  }
+}
